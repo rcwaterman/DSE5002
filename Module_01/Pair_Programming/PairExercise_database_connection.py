@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """
+TESTING
+
 Pair Programming,  Intro to Python connecting to a database
 
 HD Sheets,  July 2024
