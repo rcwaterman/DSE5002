@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-TESTING
-
 Pair Programming,  Intro to Python connecting to a database
 
 HD Sheets,  July 2024
@@ -97,7 +95,16 @@ table_listing=cur.fetchall()
 print(f'Table Listing: {table_listing}')
 
 # I didn't like how this printing, how is data stored in table_listing
+
+"""
+This data is stored in a list.
+"""
+
 # What type of variable is table_listing anyway?
+
+"""
+This is a list.
+"""
 
 type(table_listing)
 
@@ -108,7 +115,6 @@ type(table_listing)
 #comprehensions are a cool feature of python, they work on iterable data types
 
 [print(f'Table {i}: {table}') for i, table in enumerate(table_listing)]
-
 
 #okay,let's try to load a table
 
@@ -151,6 +157,10 @@ invoices_df.columns
 import matplotlib.pyplot as plt
 
 plt.hist(invoices_df.Total,bins=15)
+
+"""
+This was missing from the original file...
+"""
 plt.show()
 
 # okay, that's enough for now!
