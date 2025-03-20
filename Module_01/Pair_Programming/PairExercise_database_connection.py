@@ -2,7 +2,7 @@
 """
 Pair Programming,  Intro to Python connecting to a database
 
-HD Sheets,  July 2024
+Ryan Waterman, March 2025
 
 DSE5002 pair programmming exercise, module 5
 
