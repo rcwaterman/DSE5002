@@ -2,7 +2,7 @@
 
 4.11.1. Exercise
 
-Write a function called rectangle that draws a rectangle with given side lengths. For example, here's a rectangle that's 80 units wide and 40 units tall.
+Write a function called rectangleangle that draws a rectangleangle with given side lengths. For example, here's a rectangleangle that's 80 units wide and 40 units tall.
 
 """
 
@@ -26,7 +26,7 @@ class Window():
         #track all of the steps taken in a dictionary.
         self.steps = []
 
-    def rect(self, width=100, height=100):
+    def rectangle(self, width=100, height=100, shift=0):
         """
         Takes in a width and height and draws a rectangle based on those dims.
         """
@@ -51,6 +51,10 @@ class Window():
 
         self.t.forward(height)
         self.steps.append(("forward", height))
+
+        if shift:
+            self.t.left(shift)
+            self.steps.append(("left", shift))
 
     def is_drawn(self):
         #Track whether a rectangle has been drawn, this will evaluate as true if self.steps > 0
@@ -83,10 +87,20 @@ if __name__ == '__main__':
         vars = input("Enter the width and height separated by a space, undo to clear the existing rectangle, or exit to close the window: ")
 
         try:
-            if len(vars.split(" ")) > 1:
+            if len(vars.split(" ")) > 2:
+
+                #allowing for special 'iterations' and 'shift' keywords that will repeat the draw sequence 'iterations' times with 'shift' angular offset each time
+                width, height, iterations, shift = vars.split(" ")
+                width, height, iterations, shift = int(width), int(height), int(iterations), int(shift)
+                for i in range(iterations):
+                    w.rectangle(width, height, shift)
+                        
+            elif len(vars.split(" ")) == 2:
                 width, height = vars.split(" ")
-                w.rect(int(width), int(height))
-            else:
+                width, height = int(width), int(height)
+                w.rectangle(width, height)
+
+            elif len(vars.split(" ")) == 1:
                 if vars == "undo":
                     w.undo()
                 elif vars == "exit":
