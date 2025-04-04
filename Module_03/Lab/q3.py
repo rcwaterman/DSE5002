@@ -1,15 +1,16 @@
 """
 
-4.11.3. Exercise
+4.11.3. Exercise Part 1
 
-Now write a more general function called parallelogram that draws a quadrilateral with parallel sides. Then rewrite rectangle and rhombus to use parallelogram.
+Now write a more general function called parallelogram that draws a 
+quadrilateral with parallel sides. 
 
 """
 
 import turtle
 import sys
 
-class Window():
+class Parallelogram():
     def __init__(self):
 
         #create the canvas and turtle
@@ -57,12 +58,17 @@ class Window():
             self.steps.append(("left", shift))
 
     def is_drawn(self):
-        #Track whether a rectangle has been drawn, this will evaluate as true if self.steps > 0
+        """
+        Track whether a rectangle has been drawn, this will evaluate as 
+        true if self.steps > 0
+        """
+    
         return len(self.steps)
 
     def undo(self):
         """
-        If the rhombus is drawn, iterate through the drawing steps and complete the inverse.
+        If the rhombus is drawn, iterate through the drawing 
+        steps and complete the inverse.
         """
         if self.is_drawn():
             self.steps.reverse()
@@ -76,21 +82,26 @@ class Window():
         else:
             print("Nothing to undo.")
 
-
 if __name__ == '__main__':
 
     #Instantiate the window
-    w = Window()
+    w = Parallelogram()
 
     # Continuously prompt the user for rectangle inputs until the enter "exit"
     while 1:
-        vars = input("Enter side length 1, side length 2, and interior angle separated by a space, or 'undo' to clear the canvas or 'exit' to close the window: ")
+        vars = input("""Enter side length 1, side length 2, and interior 
+                     angle separated by a space, or 'undo' to clear the canvas 
+                     or 'exit' to close the window: """)
 
         try:
             if len(vars.split(" ")) > 3:
-
-                #allowing for special 'iterations' and 'shift' keywords that will repeat the draw sequence 'iterations' times with 'shift' angular offset each time
-                #this makes some cool patterns
+                """
+                allowing for special 'iterations' and 'shift' keywords that 
+                will repeat the draw sequence 'iterations' times with 'shift' 
+                angular offset each time
+                this makes some cool patterns
+                """
+                
                 l1, l2, angle, iterations, shift = vars.split(" ")
                 l1, l2, angle, iterations, shift = int(l1), int(l2), int(angle), int(iterations), int(shift)
 
@@ -109,7 +120,7 @@ if __name__ == '__main__':
                     break
         except:
             print("There was an error in the width and height entry, try again.")
-
+    
     sys.exit()
 
     #this keeps the canvas open

@@ -1,15 +1,15 @@
 """
 
-4.11.1. Exercise
+4.12.1. Exercise
 
-Write a function called rectangleangle that draws a rectangleangle with given side lengths. For example, here's a rectangleangle that's 80 units wide and 40 units tall.
+Write a function called rhombus that draws a rhombus with a given side length and a given interior angle. For example, here's a rhombus with side length 50 and an interior angle of 60 degrees.
 
 """
 
 import turtle
 import sys
 
-class Window():
+class Rhombus():
     def __init__(self):
 
         #create the canvas and turtle
@@ -26,31 +26,31 @@ class Window():
         #track all of the steps taken in a dictionary.
         self.steps = []
 
-    def rectangle(self, width=100, height=100, shift=0):
+    def rhombus(self, length=100, angle=60, shift=0):
         """
         Takes in a width and height and draws a rectangle based on those dims.
         """
         #take the steps required to make a rectangle
-        self.t.forward(width)
-        self.steps.append(("forward", width))
+        self.t.forward(length)
+        self.steps.append(("forward", length))
 
-        self.t.left(90)
-        self.steps.append(("left", 90))
+        self.t.left(angle)
+        self.steps.append(("left", angle))
 
-        self.t.forward(height)
-        self.steps.append(("forward", height))
+        self.t.forward(length)
+        self.steps.append(("forward", length))
 
-        self.t.left(90)
-        self.steps.append(("left", 90))
+        self.t.left(180-angle)
+        self.steps.append(("left", 180-angle))
 
-        self.t.forward(width)
-        self.steps.append(("forward", width))
+        self.t.forward(length)
+        self.steps.append(("forward", length))
 
-        self.t.left(90)
-        self.steps.append(("left", 90))
+        self.t.left(angle)
+        self.steps.append(("left", angle))
 
-        self.t.forward(height)
-        self.steps.append(("forward", height))
+        self.t.forward(length)
+        self.steps.append(("forward", length))
 
         if shift:
             self.t.left(shift)
@@ -62,7 +62,7 @@ class Window():
 
     def undo(self):
         """
-        If the rectangle is drawn, iterate through the drawing steps and complete the inverse.
+        If the rhombus is drawn, iterate through the drawing steps and complete the inverse.
         """
         if self.is_drawn():
             self.steps.reverse()
@@ -80,25 +80,27 @@ class Window():
 if __name__ == '__main__':
 
     #Instantiate the window
-    w = Window()
+    w = Rhombus()
 
     # Continuously prompt the user for rectangle inputs until the enter "exit"
     while 1:
-        vars = input("Enter the width and height separated by a space, undo to clear the existing rectangle, or exit to close the window: ")
+        vars = input("Enter the side length and interior angle separated by a space, 'undo' to clear the existing rhombus, or 'exit' to close the window: ")
 
         try:
-            if len(vars.split(" ")) > 2:
+            if len(vars.split(" ")) > 3:
 
                 #allowing for special 'iterations' and 'shift' keywords that will repeat the draw sequence 'iterations' times with 'shift' angular offset each time
-                width, height, iterations, shift = vars.split(" ")
-                width, height, iterations, shift = int(width), int(height), int(iterations), int(shift)
+                length, angle, iterations, shift = vars.split(" ")
+                length, angle, iterations, shift = int(length), int(angle), int(iterations), int(shift)
+
                 for i in range(iterations):
-                    w.rectangle(width, height, shift)
-                        
+                    w.rhombus(length, angle, shift)
+
             elif len(vars.split(" ")) == 2:
-                width, height = vars.split(" ")
-                width, height = int(width), int(height)
-                w.rectangle(width, height)
+                length, angle = vars.split(" ")
+                length, angle = int(length), int(angle)
+                
+                w.rhombus(length, angle)
 
             elif len(vars.split(" ")) == 1:
                 if vars == "undo":
@@ -107,7 +109,7 @@ if __name__ == '__main__':
                     break
         except:
             print("There was an error in the width and height entry, try again.")
-
+    
     sys.exit()
 
     #this keeps the canvas open
