@@ -14,6 +14,7 @@ class Parallelogram():
     def __init__(self):
 
         #create the canvas and turtle
+        self.screen = turtle.Screen()
         self.t = turtle.Turtle()
 
         #This dictionary contains the action step and it's inverse function
@@ -82,16 +83,18 @@ class Parallelogram():
         else:
             print("Nothing to undo.")
 
-if __name__ == '__main__':
+    def get_input(self, wrapper=False):
+        """
+        Adding this function to this class in preparation for part 2 of this question.
 
-    #Instantiate the window
-    w = Parallelogram()
+        The 'wrapper' key word changes the input text if parallelogram is being called 
+        by a wrapper class.
+        """
 
-    # Continuously prompt the user for rectangle inputs until the enter "exit"
-    while 1:
-        vars = input("""Enter side length 1, side length 2, and interior 
-                     angle separated by a space, or 'undo' to clear the canvas 
-                     or 'exit' to close the window: """)
+        if wrapper:
+            vars = input("""Enter side length 1, side length 2, and interior angle separated by a space, 'undo' to clear the canvas or 'exit' to return to shape selection: """)
+        else:
+            vars = input("""Enter side length 1, side length 2, and interior angle separated by a space, or 'undo' to clear the canvas or 'exit' to close the window: """)
 
         try:
             if len(vars.split(" ")) > 3:
@@ -106,21 +109,40 @@ if __name__ == '__main__':
                 l1, l2, angle, iterations, shift = int(l1), int(l2), int(angle), int(iterations), int(shift)
 
                 for i in range(iterations):
-                    w.parallelogram(l1, l2, angle, shift)
+                    self.parallelogram(l1, l2, angle, shift)
 
             elif len(vars.split(" ")) == 3:
                 l1, l2, angle = vars.split(" ")
                 l1, l2, angle = int(l1), int(l2), int(angle)
-                w.parallelogram(l1, l2, angle)
+                self.parallelogram(l1, l2, angle)
 
             elif len(vars.split(" ")) == 1:
                 if vars == "undo":
-                    w.undo()
+                    self.undo()
                 elif vars == "exit":
-                    break
+                    #return true as an escape condition for the while loop
+                    return 1
         except:
-            print("There was an error in the width and height entry, try again.")
+            print("There was an error in the entry, try again.")
     
+    def clearscreen(self):
+        """
+        Adding in preparation for part 2...
+
+        Give the user will have the option to clear the screen
+        """
+        self.screen.clearscreen()
+
+if __name__ == '__main__':
+
+    #Instantiate the parallelogram
+    para = Parallelogram()
+
+    # Continuously prompt the user for parallalogram inputs until the enter "exit"
+    while 1:
+        if para.get_input():
+            break
+
     sys.exit()
 
     #this keeps the canvas open

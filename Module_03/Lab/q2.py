@@ -79,10 +79,10 @@ class Rhombus():
 
 if __name__ == '__main__':
 
-    #Instantiate the window
-    w = Rhombus()
+    #Instantiate the rhombus
+    rhomb = Rhombus()
 
-    # Continuously prompt the user for rectangle inputs until the enter "exit"
+    # Continuously prompt the user for rhombus inputs until the enter "exit"
     while 1:
         vars = input("Enter the side length and interior angle separated by a space, 'undo' to clear the existing rhombus, or 'exit' to close the window: ")
 
@@ -94,21 +94,21 @@ if __name__ == '__main__':
                 length, angle, iterations, shift = int(length), int(angle), int(iterations), int(shift)
 
                 for i in range(iterations):
-                    w.rhombus(length, angle, shift)
+                    rhomb.rhombus(length, angle, shift)
 
             elif len(vars.split(" ")) == 2:
                 length, angle = vars.split(" ")
                 length, angle = int(length), int(angle)
                 
-                w.rhombus(length, angle)
+                rhomb.rhombus(length, angle)
 
             elif len(vars.split(" ")) == 1:
                 if vars == "undo":
-                    w.undo()
+                    rhomb.undo()
                 elif vars == "exit":
                     break
         except:
-            print("There was an error in the width and height entry, try again.")
+            print("There was an error in the entry, try again.")
     
     sys.exit()
 

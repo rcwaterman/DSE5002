@@ -79,8 +79,8 @@ class Rectangle():
 
 if __name__ == '__main__':
 
-    #Instantiate the window
-    w = Rectangle()
+    #Instantiate the rectangle
+    rect = Rectangle()
 
     # Continuously prompt the user for rectangle inputs until the enter "exit"
     while 1:
@@ -93,20 +93,20 @@ if __name__ == '__main__':
                 width, height, iterations, shift = vars.split(" ")
                 width, height, iterations, shift = int(width), int(height), int(iterations), int(shift)
                 for i in range(iterations):
-                    w.rectangle(width, height, shift)
+                    rect.rectangle(width, height, shift)
                         
             elif len(vars.split(" ")) == 2:
                 width, height = vars.split(" ")
                 width, height = int(width), int(height)
-                w.rectangle(width, height)
+                rect.rectangle(width, height)
 
             elif len(vars.split(" ")) == 1:
                 if vars == "undo":
-                    w.undo()
+                    rect.undo()
                 elif vars == "exit":
                     break
         except:
-            print("There was an error in the width and height entry, try again.")
+            print("There was an error in the entry, try again.")
   
   
     sys.exit()
