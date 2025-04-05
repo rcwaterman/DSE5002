@@ -85,10 +85,11 @@ class Parallelogram():
 
     def get_input(self, wrapper=False):
         """
-        Adding this function to this class in preparation for part 2 of this question.
+        Adding this function to this class in preparation for part 2 of this 
+        question.
 
-        The 'wrapper' key word changes the input text if parallelogram is being called 
-        by a wrapper class.
+        The 'wrapper' key word changes the input text if parallelogram is being 
+        called by a wrapper class.
         """
 
         if wrapper:
@@ -96,6 +97,18 @@ class Parallelogram():
         else:
             vars = input("""Enter side length 1, side length 2, and interior angle separated by a space, or 'undo' to clear the canvas or 'exit' to close the window: """)
 
+        #just so you can read the input for wrapper=Trua, I am copying it below:
+        """
+        Enter side length 1, side length 2, and interior angle separated by a space, 
+        'undo' to clear the canvas or 'exit' to return to shape selection: 
+        """
+
+        #just so you can read the input for wrapper=False, I am copying it below:
+        """
+        Enter side length 1, side length 2, and interior angle separated by a space, 
+        or 'undo' to clear the canvas or 'exit' to close the window: 
+        """
+    
         try:
             if len(vars.split(" ")) > 3:
                 """
@@ -106,7 +119,16 @@ class Parallelogram():
                 """
                 
                 l1, l2, angle, iterations, shift = vars.split(" ")
-                l1, l2, angle, iterations, shift = int(l1), int(l2), int(angle), int(iterations), int(shift)
+                
+                """
+                In my code I assigned all of these in one line, but they 
+                get cut off in the PDF
+                """
+                l1 = int(l1)
+                l2 = int(l2)
+                angle = int(angle)
+                iterations = int(iterations)
+                shift = int(shift)
 
                 for i in range(iterations):
                     self.parallelogram(l1, l2, angle, shift)
@@ -138,7 +160,10 @@ if __name__ == '__main__':
     #Instantiate the parallelogram
     para = Parallelogram()
 
-    # Continuously prompt the user for parallalogram inputs until the enter "exit"
+    """
+    Continuously prompt the user for parallalogram 
+    inputs until the enter "exit"
+    """
     while 1:
         if para.get_input():
             break

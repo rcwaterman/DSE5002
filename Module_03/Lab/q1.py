@@ -2,7 +2,9 @@
 
 4.11.1. Exercise
 
-Write a function called rectangleangle that draws a rectangleangle with given side lengths. For example, here's a rectangleangle that's 80 units wide and 40 units tall.
+Write a function called rectangleangle that draws a rectangleangle with given 
+side lengths. For example, here's a rectangleangle that's 80 units wide and 40 
+units tall.
 
 """
 
@@ -57,12 +59,16 @@ class Rectangle():
             self.steps.append(("left", shift))
 
     def is_drawn(self):
-        #Track whether a rectangle has been drawn, this will evaluate as true if self.steps > 0
+        """
+        Track whether a rectangle has been drawn, this will evaluate 
+        as true if self.steps > 0
+        """
         return len(self.steps)
 
     def undo(self):
         """
-        If the rectangle is drawn, iterate through the drawing steps and complete the inverse.
+        If the rectangle is drawn, iterate through the drawing steps 
+        and complete the inverse.
         """
         if self.is_drawn():
             self.steps.reverse()
@@ -86,12 +92,31 @@ if __name__ == '__main__':
     while 1:
         vars = input("Enter the width and height separated by a space, undo to clear the existing rectangle, or exit to close the window: ")
 
+        #just so you can read the input, I am copying it below:
+        """
+        Enter the width and height separated by a space, undo to clear the 
+        existing rectangle, or exit to close the window: 
+        """
         try:
             if len(vars.split(" ")) > 2:
 
-                #allowing for special 'iterations' and 'shift' keywords that will repeat the draw sequence 'iterations' times with 'shift' angular offset each time
+                """
+                allowing for special 'iterations' and 'shift' keywords that 
+                will repeat the draw sequence 'iterations' times with 'shift' 
+                angular offset each time.
+                """
+                
                 width, height, iterations, shift = vars.split(" ")
-                width, height, iterations, shift = int(width), int(height), int(iterations), int(shift)
+                
+                """
+                In my code I assigned all of these in one line, but they 
+                get cut off in the PDF
+                """
+                width = int(width)
+                height = int(height)
+                iterations = int(iterations)
+                shift = int(shift)
+                
                 for i in range(iterations):
                     rect.rectangle(width, height, shift)
                         

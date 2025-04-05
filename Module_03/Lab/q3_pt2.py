@@ -24,14 +24,34 @@ class Rectangle_V2():
         self.renderer.undo()
 
     def get_input(self):
+        
         vars = input("Enter the width and height separated by a space, undo to clear the existing rectangle, or exit to return to shape selection: ")
+        
+        #just so you can read the input, I am copying it below:
+        """
+        Enter the width and height separated by a space, undo to clear the 
+        existing rectangle, or exit to return to shape selection: 
+        """
 
         try:
             if len(vars.split(" ")) > 2:
 
-                #allowing for special 'iterations' and 'shift' keywords that will repeat the draw sequence 'iterations' times with 'shift' angular offset each time
+                """
+                allowing for special 'iterations' and 'shift' keywords that 
+                will repeat the draw sequence 'iterations' times with 'shift' 
+                angular offset each time
+                """
                 width, height, iterations, shift = vars.split(" ")
-                width, height, iterations, shift = int(width), int(height), int(iterations), int(shift)
+                
+                """
+                In my code I assigned all of these in one line, but they 
+                get cut off in the PDF
+                """
+                width = int(width)
+                height = int(height)
+                iterations = int(iterations)
+                shift = int(shift)
+                
                 for i in range(iterations):
                     self.rectangle(width, height, shift)
                         
@@ -63,20 +83,43 @@ class Rhombus_V2():
         self.renderer = Parallelogram()
 
     def rhombus(self, length=100, angle=60, shift=0):
-        self.renderer.parallelogram(l1=length, l2=length, angle=angle, shift=shift)
+        self.renderer.parallelogram(
+                                    l1=length, 
+                                    l2=length, 
+                                    angle=angle, 
+                                    shift=shift
+                                    )
 
     def undo(self):
         self.renderer.undo()
 
     def get_input(self):
         vars = input("Enter the side length and interior angle separated by a space, 'undo' to clear the existing rhombus, or 'exit' to return to shape selection: ")
-
+        
+        #just so you can read the input, I am copying it below:
+        """
+        Enter the side length and interior angle separated by a space, 'undo' 
+        to clear the existing rhombus, or 'exit' to return to shape selection:
+        """
+        
         try:
             if len(vars.split(" ")) > 3:
 
-                #allowing for special 'iterations' and 'shift' keywords that will repeat the draw sequence 'iterations' times with 'shift' angular offset each time
+                """
+                allowing for special 'iterations' and 'shift' keywords that 
+                will repeat the draw sequence 'iterations' times with 'shift' 
+                angular offset each time
+                """
                 length, angle, iterations, shift = vars.split(" ")
-                length, angle, iterations, shift = int(length), int(angle), int(iterations), int(shift)
+                
+                """
+                In my code I assigned all of these in one line, but they 
+                get cut off in the PDF
+                """
+                length = int(length)
+                angle = int(angle)
+                iterations = int(iterations)
+                shift = int(shift)
 
                 for i in range(iterations):
                     self.rhombus(length, angle, shift)
@@ -109,6 +152,12 @@ if __name__ == '__main__':
     while 1:
 
         shape_selection = input("Enter 1 for rectangle, 2 for rhombus, 3 for parallelogram, clear, or exit: ")
+        
+        #just so you can read the input, I am copying it below:
+        """
+        Enter 1 for rectangle, 2 for rhombus, 3 for parallelogram, clear, 
+        or exit: 
+        """
 
         if shape_selection == '1':
             shape = Rectangle_V2()
@@ -138,8 +187,11 @@ if __name__ == '__main__':
             del shape
 
         elif shape_selection == "clear":
-            #Instantiate the parallelogram to gain access to the clear function
-            #clear exists at the shape selection level because 'undo' exists at the drawing level
+            """
+            Instantiate the parallelogram to gain access to the clear function
+            clear exists at the shape selection level because 'undo' exists
+            at the drawing level
+            """
             shape = Parallelogram()
             shape.clearscreen()
             del shape
