@@ -1,0 +1,27 @@
+,account_id,name
+0,1.0,checking account
+1,2.0,savings account
+2,3.0,certificate of deposit
+3,4.0,checking account
+4,5.0,savings account
+5,7.0,checking account
+6,8.0,money market account
+7,10.0,checking account
+8,11.0,savings account
+9,12.0,money market account
+10,13.0,checking account
+11,14.0,checking account
+12,15.0,certificate of deposit
+13,17.0,certificate of deposit
+14,18.0,checking account
+15,19.0,savings account
+16,21.0,checking account
+17,22.0,money market account
+18,23.0,certificate of deposit
+19,24.0,checking account
+20,25.0,business line of credit
+21,27.0,business line of credit
+22,28.0,checking account
+23,29.0,small business loan
+24,NaN,home mortgage
+25,NaN,auto loan
