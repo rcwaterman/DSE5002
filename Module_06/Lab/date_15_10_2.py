@@ -191,7 +191,7 @@ class Date():
         # Now that the self.MONTH_MAPPING dictionary contains the correct number of days for February, validate the day input and assign the self.day attribute
         self._validate_day(day)
 
-    def is_after(self, date2:Date) -> bool:
+    def is_after(self, date2) -> bool:
         """
         Determine if the date contained in this instance comes after the input.
         """
